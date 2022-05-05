@@ -1,483 +1,650 @@
-terraform_version = "0.12.13"
+import "strings"
+import "types"
 
-planned_values = {
-	"outputs": {
-		"sse": {
-			"name":      "sse",
-			"sensitive": false,
-			"value":     "aws:kms",
-		},
+_modules = {
+	"root": {
+		"data":      {},
+		"path":      [],
+		"resources": {},
 	},
-	"resources": {
-		"aws_s3_bucket.bucket": {
-			"address":        "aws_s3_bucket.bucket",
-			"depends_on":     [],
-			"deposed_key":    "",
-			"index":          null,
-			"mode":           "managed",
-			"module_address": "",
-			"name":           "bucket",
-			"provider_name":  "aws",
-			"tainted":        false,
-			"type":           "aws_s3_bucket",
-			"values": {
-				"acl":            "private",
-				"bucket":         "roger-012-test",
-				"bucket_prefix":  null,
-				"cors_rule":      [],
-				"force_destroy":  false,
-				"grant":          [],
-				"lifecycle_rule": [],
-				"logging": [
-					{
-						"target_bucket": "roger-tf",
-						"target_prefix": "",
-					},
-				],
-				"object_lock_configuration": [],
-				"policy":                    null,
-				"replication_configuration": [],
-				"server_side_encryption_configuration": [
-					{
-						"rule": [
-							{
-								"apply_server_side_encryption_by_default": [
-									{
-										"kms_master_key_id": "arn:aws:kms:us-east-1:753646501470:key/00c892e8-40c4-4048-a650-0f755876503d",
-										"sse_algorithm":     "aws:kms",
-									},
-								],
-							},
-						],
-					},
-				],
-				"tags": {
-					"Owner": "roger@hashicorp.com",
-					"name":  "Roger Test Bucket",
-				},
-				"website": [
-					{
-						"error_document":           null,
-						"index_document":           "index.html",
-						"redirect_all_requests_to": null,
-						"routing_rules":            "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]",
-					},
-				],
-			},
-		},
-	},
-}
 
-variables = {
-	"aws_region": {
-		"name":  "aws_region",
-		"value": "us-east-1",
-	},
-	"bucket_acl": {
-		"name":  "bucket_acl",
-		"value": "private",
-	},
-	"bucket_name": {
-		"name":  "bucket_name",
-		"value": "roger-012-test",
-	},
-}
-
-resource_changes = {
-	"aws_s3_bucket.bucket": {
-		"address": "aws_s3_bucket.bucket",
-		"change": {
-			"actions": [
-				"create",
-			],
-			"after": {
-				"acl":            "private",
-				"bucket":         "roger-012-test",
-				"bucket_prefix":  null,
-				"cors_rule":      [],
-				"force_destroy":  false,
-				"grant":          [],
-				"lifecycle_rule": [],
-				"logging": [
-					{
-						"target_bucket": "roger-tf",
-						"target_prefix": "",
-					},
-				],
-				"object_lock_configuration": [],
-				"policy":                    null,
-				"replication_configuration": [],
-				"server_side_encryption_configuration": [
-					{
-						"rule": [
-							{
-								"apply_server_side_encryption_by_default": [
-									{
-										"kms_master_key_id": "arn:aws:kms:us-east-1:753646501470:key/00c892e8-40c4-4048-a650-0f755876503d",
-										"sse_algorithm":     "aws:kms",
-									},
-								],
-							},
-						],
-					},
-				],
-				"tags": {
-					"Owner": "roger@hashicorp.com",
-					"name":  "Roger Test Bucket",
-				},
-				"website": [
-					{
-						"error_document":           null,
-						"index_document":           "index.html",
-						"redirect_all_requests_to": null,
-						"routing_rules":            "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]",
-					},
-				],
-			},
-			"after_unknown": {
-				"acceleration_status": true,
-				"arn":                         true,
-				"bucket_domain_name":          true,
-				"bucket_regional_domain_name": true,
-				"cors_rule":                   [],
-				"grant":                       [],
-				"hosted_zone_id":              true,
-				"id":                          true,
-				"lifecycle_rule":              [],
-				"logging": [
-					{},
-				],
-				"object_lock_configuration": [],
-				"region":                    true,
-				"replication_configuration": [],
-				"request_payer":             true,
-				"server_side_encryption_configuration": [
-					{
-						"rule": [
-							{
-								"apply_server_side_encryption_by_default": [
-									{},
-								],
-							},
-						],
-					},
-				],
-				"tags":       {},
-				"versioning": true,
-				"website": [
-					{},
-				],
-				"website_domain":   true,
-				"website_endpoint": true,
-			},
-			"before": null,
-		},
-		"deposed":        "",
-		"index":          null,
-		"mode":           "managed",
-		"module_address": "",
-		"name":           "bucket",
-		"provider_name":  "aws",
-		"type":           "aws_s3_bucket",
-	},
-}
-
-output_changes = {
-	"sse": {
-		"change": {
-			"actions": [
-				"create",
-			],
-			"after":         "aws:kms",
-			"after_unknown": false,
-			"before":        null,
-		},
-		"name": "sse",
-	},
-}
-
-raw = {
-	"configuration": {
-		"provider_config": {
-			"aws": {
-				"expressions": {
-					"region": {
-						"references": [
-							"var.aws_region",
-						],
-					},
-				},
-				"name": "aws",
-			},
-		},
-		"root_module": {
-			"outputs": {
-				"sse": {
-					"expression": {
-						"references": [
-							"aws_s3_bucket.bucket",
-						],
-					},
-				},
-			},
-			"resources": [
-				{
-					"address": "aws_s3_bucket.bucket",
-					"expressions": {
-						"acl": {
-							"references": [
-								"var.bucket_acl",
-							],
+	"module.s3_bucket": {
+		"data": {
+			"aws_iam_policy_document": {
+				"combined": {
+					0: {
+						"applied": {
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"statement":                 [],
+							"version":                   null,
 						},
-						"bucket": {
-							"references": [
-								"var.bucket_name",
-							],
-						},
-						"logging": [
-							{
-								"target_bucket": {
-									"constant_value": "roger-tf",
-								},
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-						],
-						"server_side_encryption_configuration": [
-							{
-								"rule": [
-									{
-										"apply_server_side_encryption_by_default": [
-											{
-												"kms_master_key_id": {
-													"constant_value": "arn:aws:kms:us-east-1:753646501470:key/00c892e8-40c4-4048-a650-0f755876503d",
-												},
-												"sse_algorithm": {
-													"constant_value": "aws:kms",
-												},
-											},
-										],
-									},
-								],
+							"json": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
 							},
-						],
-						"tags": {
-							"constant_value": {
-								"Owner": "roger@hashicorp.com",
-								"name":  "Roger Test Bucket",
+							"override_json": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"override_policy_documents": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"policy_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"source_json": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"source_policy_documents.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
 							},
 						},
-						"website": [
-							{
-								"index_document": {
-									"constant_value": "index.html",
-								},
-								"routing_rules": {
-									"constant_value": "[{\n    \"Condition\": {\n        \"KeyPrefixEquals\": \"docs/\"\n    },\n    \"Redirect\": {\n        \"ReplaceKeyPrefixWith\": \"documents/\"\n    }\n}]\n",
-								},
-							},
-						],
-					},
-					"mode":                "managed",
-					"name":                "bucket",
-					"provider_config_key": "aws",
-					"schema_version":      0,
-					"type":                "aws_s3_bucket",
-				},
-			],
-			"variables": {
-				"aws_region": {
-					"default":     "us-east-1",
-					"description": "AWS region",
-				},
-				"bucket_acl": {
-					"default":     "private",
-					"description": "ACL for S3 bucket: private, public-read, public-read-write, etc",
-				},
-				"bucket_name": {
-					"description": "Name of the bucket to create",
-				},
-			},
-		},
-	},
-	"format_version": "0.1",
-	"output_changes": {
-		"sse": {
-			"actions": [
-				"create",
-			],
-			"after":         "aws:kms",
-			"after_unknown": false,
-			"before":        null,
-		},
-	},
-	"planned_values": {
-		"outputs": {
-			"sse": {
-				"sensitive": false,
-				"value":     "aws:kms",
-			},
-		},
-		"root_module": {
-			"resources": [
-				{
-					"address":        "aws_s3_bucket.bucket",
-					"mode":           "managed",
-					"name":           "bucket",
-					"provider_name":  "aws",
-					"schema_version": 0,
-					"type":           "aws_s3_bucket",
-					"values": {
-						"acl":            "private",
-						"bucket":         "roger-012-test",
-						"bucket_prefix":  null,
-						"cors_rule":      [],
-						"force_destroy":  false,
-						"grant":          [],
-						"lifecycle_rule": [],
-						"logging": [
-							{
-								"target_bucket": "roger-tf",
-								"target_prefix": "",
-							},
-						],
-						"object_lock_configuration": [],
-						"policy":                    null,
-						"replication_configuration": [],
-						"server_side_encryption_configuration": [
-							{
-								"rule": [
-									{
-										"apply_server_side_encryption_by_default": [
-											{
-												"kms_master_key_id": "arn:aws:kms:us-east-1:753646501470:key/00c892e8-40c4-4048-a650-0f755876503d",
-												"sse_algorithm":     "aws:kms",
-											},
-										],
-									},
-								],
-							},
-						],
-						"tags": {
-							"Owner": "roger@hashicorp.com",
-							"name":  "Roger Test Bucket",
-						},
-						"website": [
-							{
-								"error_document":           null,
-								"index_document":           "index.html",
-								"redirect_all_requests_to": null,
-								"routing_rules":            "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]",
-							},
-						],
+						"requires_new": false,
 					},
 				},
-			],
-		},
-	},
-	"resource_changes": [
-		{
-			"address": "aws_s3_bucket.bucket",
-			"change": {
-				"actions": [
-					"create",
-				],
-				"after": {
-					"acl":            "private",
-					"bucket":         "roger-012-test",
-					"bucket_prefix":  null,
-					"cors_rule":      [],
-					"force_destroy":  false,
-					"grant":          [],
-					"lifecycle_rule": [],
-					"logging": [
-						{
-							"target_bucket": "roger-tf",
-							"target_prefix": "",
-						},
-					],
-					"object_lock_configuration": [],
-					"policy":                    null,
-					"replication_configuration": [],
-					"server_side_encryption_configuration": [
-						{
-							"rule": [
+				"deny_insecure_transport": {
+					0: {
+						"applied": {
+							"override_json":             null,
+							"override_policy_documents": null,
+							"policy_id":                 null,
+							"source_json":               null,
+							"source_policy_documents":   null,
+							"statement": [
 								{
-									"apply_server_side_encryption_by_default": [
+									"actions": [
+										"s3:*",
+									],
+									"condition": [
 										{
-											"kms_master_key_id": "arn:aws:kms:us-east-1:753646501470:key/00c892e8-40c4-4048-a650-0f755876503d",
-											"sse_algorithm":     "aws:kms",
+											"test": "Bool",
+											"values": [
+												"false",
+											],
+											"variable": "aws:SecureTransport",
 										},
 									],
-								},
-							],
-						},
-					],
-					"tags": {
-						"Owner": "roger@hashicorp.com",
-						"name":  "Roger Test Bucket",
-					},
-					"website": [
-						{
-							"error_document":           null,
-							"index_document":           "index.html",
-							"redirect_all_requests_to": null,
-							"routing_rules":            "[{\"Condition\":{\"KeyPrefixEquals\":\"docs/\"},\"Redirect\":{\"ReplaceKeyPrefixWith\":\"documents/\"}}]",
-						},
-					],
-				},
-				"after_unknown": {
-					"acceleration_status": true,
-					"arn":                         true,
-					"bucket_domain_name":          true,
-					"bucket_regional_domain_name": true,
-					"cors_rule":                   [],
-					"grant":                       [],
-					"hosted_zone_id":              true,
-					"id":                          true,
-					"lifecycle_rule":              [],
-					"logging": [
-						{},
-					],
-					"object_lock_configuration": [],
-					"region":                    true,
-					"replication_configuration": [],
-					"request_payer":             true,
-					"server_side_encryption_configuration": [
-						{
-							"rule": [
-								{
-									"apply_server_side_encryption_by_default": [
-										{},
+									"effect":         "Deny",
+									"not_actions":    null,
+									"not_principals": [],
+									"not_resources":  null,
+									"principals": [
+										{
+											"identifiers": [
+												"*",
+											],
+											"type": "*",
+										},
 									],
+									"resources": [],
+									"sid":       "denyInsecureTransport",
 								},
 							],
+							"version": null,
 						},
-					],
-					"tags":       {},
-					"versioning": true,
-					"website": [
-						{},
-					],
-					"website_domain":   true,
-					"website_endpoint": true,
+						"destroy": false,
+						"diff": {
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"json": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"override_json": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"override_policy_documents": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"policy_id": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"source_json": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"source_policy_documents": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.%": {
+								"computed": false,
+								"new":      "9",
+								"old":      "",
+							},
+							"statement.0.actions.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.actions.0": {
+								"computed": false,
+								"new":      "s3:*",
+								"old":      "",
+							},
+							"statement.0.condition.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.condition.0.%": {
+								"computed": false,
+								"new":      "3",
+								"old":      "",
+							},
+							"statement.0.condition.0.test": {
+								"computed": false,
+								"new":      "Bool",
+								"old":      "",
+							},
+							"statement.0.condition.0.values.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.condition.0.values.0": {
+								"computed": false,
+								"new":      "false",
+								"old":      "",
+							},
+							"statement.0.condition.0.variable": {
+								"computed": false,
+								"new":      "aws:SecureTransport",
+								"old":      "",
+							},
+							"statement.0.effect": {
+								"computed": false,
+								"new":      "Deny",
+								"old":      "",
+							},
+							"statement.0.not_actions": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.not_principals.#": {
+								"computed": false,
+								"new":      "0",
+								"old":      "",
+							},
+							"statement.0.not_resources": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.principals.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.principals.0.%": {
+								"computed": false,
+								"new":      "2",
+								"old":      "",
+							},
+							"statement.0.principals.0.identifiers.#": {
+								"computed": false,
+								"new":      "1",
+								"old":      "",
+							},
+							"statement.0.principals.0.identifiers.0": {
+								"computed": false,
+								"new":      "*",
+								"old":      "",
+							},
+							"statement.0.principals.0.type": {
+								"computed": false,
+								"new":      "*",
+								"old":      "",
+							},
+							"statement.0.resources.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"statement.0.sid": {
+								"computed": false,
+								"new":      "denyInsecureTransport",
+								"old":      "",
+							},
+							"version": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
 				},
-				"before": null,
 			},
-			"mode":          "managed",
-			"name":          "bucket",
-			"provider_name": "aws",
-			"type":          "aws_s3_bucket",
 		},
-	],
-	"terraform_version": "0.12.13",
-	"variables": {
-		"aws_region": {
-			"value": "us-east-1",
-		},
-		"bucket_acl": {
-			"value": "private",
-		},
-		"bucket_name": {
-			"value": "roger-012-test",
+		"path": [
+			"s3_bucket",
+		],
+		"resources": {
+			"aws_s3_bucket": {
+				"this": {
+					0: {
+						"applied": {
+							"acl":           "private",
+							"bucket":        "sentinel_test",
+							"bucket_prefix": null,
+							"force_destroy": true,
+							"tags": {
+								"Account_Name":        "",
+								"Cost_Center":         "",
+								"Environment":         "",
+								"Owner":               "",
+								"ProjectID":           "",
+								"Provisioned_by_iaac": "",
+								"Stagging":            "",
+								"Tenant":              "",
+							},
+							"tags_all": {},
+						},
+						"destroy": false,
+						"diff": {
+							"acceleration_status": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"acl": {
+								"computed": false,
+								"new":      "private",
+								"old":      "",
+							},
+							"arn": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": false,
+								"new":      "sentinel_test",
+								"old":      "",
+							},
+							"bucket_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_prefix": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"bucket_regional_domain_name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"cors_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"force_destroy": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"grant.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"hosted_zone_id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"lifecycle_rule.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"logging.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"object_lock_enabled": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"region": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"replication_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"request_payer": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"server_side_encryption_configuration.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.%": {
+								"computed": false,
+								"new":      "8",
+								"old":      "",
+							},
+							"tags.Account_Name": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Cost_Center": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Environment": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Owner": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.ProjectID": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Provisioned_by_iaac": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Stagging": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags.Tenant": {
+								"computed": false,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.%": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Account_Name": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Cost_Center": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Environment": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Owner": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.ProjectID": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Provisioned_by_iaac": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Stagging": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"tags_all.Tenant": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"versioning.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website.#": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_domain": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"website_endpoint": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket_policy": {
+				"this": {
+					0: {
+						"applied": {},
+						"destroy": false,
+						"diff": {
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"policy": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
+			"aws_s3_bucket_public_access_block": {
+				"this": {
+					0: {
+						"applied": {
+							"block_public_acls":       true,
+							"block_public_policy":     true,
+							"ignore_public_acls":      true,
+							"restrict_public_buckets": true,
+						},
+						"destroy": false,
+						"diff": {
+							"block_public_acls": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"block_public_policy": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"bucket": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"id": {
+								"computed": true,
+								"new":      "",
+								"old":      "",
+							},
+							"ignore_public_acls": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+							"restrict_public_buckets": {
+								"computed": false,
+								"new":      "true",
+								"old":      "",
+							},
+						},
+						"requires_new": false,
+					},
+				},
+			},
 		},
 	},
 }
+
+module_paths = [
+	[],
+	[
+		"s3_bucket",
+	],
+]
+
+terraform_version = "1.1.9"
+
+variables = {
+	"PublicIPAdress":        "182.70.96.156",
+	"Source_IP":             "192.168.1.0/24",
+	"THIRD_PARTY_PUBLIC_IP": "192.168.1.0/24",
+	"acl":                                   "log-delivery-write",
+	"acl_value":                             "private",
+	"attach_policy":                         true,
+	"attach_public_policy":                  true,
+	"block_public_acls":                     true,
+	"endpoint_name":                         "VPC_endpoint",
+	"environment":                           "test",
+	"expiration_of_objects_number_of_days":  365,
+	"force_destroy":                         false,
+	"inteligenttiering":                     true,
+	"kms_master_key_id":                     "arn:aws:kms:eu-west-1:776865699036:key/7118b04b-cec8-4378-9961-5bd6bd9cf164",
+	"logging_bucket_name":                   "sx-nyc-unsafe-logging-bucket",
+	"noncurrent_version_expiration":         365,
+	"number_of_days_for_initial_transition": 30,
+	"number_of_days_for_second_transition":  60,
+	"owner": "roger@hashicorp.com",
+	"s3_bucket_server_side_encryption": true,
+	"sqs_que_arn":                      "arn:aws:sqs:eu-west-1:224748228916:test-sx-scanning-sqs",
+	"sse_algorithm":                    "aws:kms",
+	"storage_class_initial_transition": "ONEZONE_IA",
+	"storage_class_second_transition":  "GLACIER",
+	"target_prefix":                    "log/",
+	"upload_bucket":                    "sx-unsafe-shared",
+	"upload_bucket_1":                  "sx-unsafe-nyc",
+	"versioning":                       true,
+}
+
+module = func(path) {
+	if types.type_of(path) is not "list" {
+		error("expected list, got", types.type_of(path))
+	}
+
+	if length(path) < 1 {
+		return _modules.root
+	}
+
+	addr = []
+	for path as p {
+		append(addr, "module")
+		append(addr, p)
+	}
+
+	return _modules[strings.join(addr, ".")]
+}
+
+data = _modules.root.data
+path = _modules.root.path
+resources = _modules.root.resources
