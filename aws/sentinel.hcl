@@ -34,7 +34,7 @@ policy "validate-providers-from-desired-regions" {
   enforcement_level = "advisory"
 }
   
-  mock "tfconfig" {
+mock "tfconfig" {
   module {
     source = "./mocks/mock-tfconfig.sentinel"
   }
