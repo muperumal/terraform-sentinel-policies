@@ -34,3 +34,8 @@ policy "validate-providers-from-desired-regions" {
   enforcement_level = "advisory"
 }
   
+  policy "restrict-availability-zones" {
+  source = "./restrict-availability-zones.sentinel"
+  enforcement_level = "advisory"
+}
+  
