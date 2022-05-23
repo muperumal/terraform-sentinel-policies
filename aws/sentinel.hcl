@@ -39,3 +39,7 @@ policy "validate-providers-from-desired-regions" {
   enforcement_level = "advisory"
 }
   
+policy "protect-against-rds-instance-deletion" {
+  source = "./protect-against-rds-instance-deletion.sentinel"
+  enforcement_level = "advisory"
+}
