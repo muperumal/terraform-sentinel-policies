@@ -11,7 +11,7 @@ mandatory_tags = ["Environment"]
 
 # Allowed Environments
 # Include "null" to allow missing or computed values
-allowed_environments = ["dev", "qa", "prod"]
+allowed_environments = ["dev", "test", "prod"]
 
 # Get all EC2 instances
 allEC2Instances = plan.find_resources("aws_instance")
