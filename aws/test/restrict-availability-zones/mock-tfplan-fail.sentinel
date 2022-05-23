@@ -11,15 +11,15 @@ variables = {
 	},
 	"aws_region": {
 		"name":  "aws_region",
-		"value": "us-west-1",
+		"value": "eu-west-1",
 	},
 	"instance_type": {
 		"name":  "instance_type",
-		"value": "t2.xlarge",
+		"value": "r5.xlarge",t2.small,
 	},
 	"name": {
 		"name":  "name",
-		"value": "roger-demo",
+		"value": "",
 	},
 }
 
@@ -33,7 +33,7 @@ resource_changes = {
 			"after": {
 				"ami": "ami-2e1ef954",
 				"associate_public_ip_address":          true,
-				"availability_zone":                    "us-west-1b",
+				"availability_zone":                    "eu-west-1b",
 				"credit_specification":                 [],
 				"disable_api_termination":              null,
 				"ebs_optimized":                        null,
@@ -41,12 +41,12 @@ resource_changes = {
 				"hibernation":                          null,
 				"iam_instance_profile":                 null,
 				"instance_initiated_shutdown_behavior": null,
-				"instance_type":                        "t2.xlarge",
+				"instance_type":                        "r5.xlarge",
 				"monitoring":                           null,
 				"source_dest_check":                    true,
 				"tags": {
-					"Name":  "roger-demo",
-					"Owner": "rberlind",
+					"Name":  "",
+					"Owner": "",
 				},
 				"timeouts":         null,
 				"user_data":        null,
@@ -101,7 +101,7 @@ resource_changes = {
 			"after": {
 				"ami": "ami-2e1ef954",
 				"associate_public_ip_address":          true,
-				"availability_zone":                    "us-west-1b",
+				"availability_zone":                    "eu-west-1b",
 				"credit_specification":                 [],
 				"disable_api_termination":              null,
 				"ebs_optimized":                        null,
@@ -109,12 +109,12 @@ resource_changes = {
 				"hibernation":                          null,
 				"iam_instance_profile":                 null,
 				"instance_initiated_shutdown_behavior": null,
-				"instance_type":                        "t2.xlarge",
+				"instance_type":                        "r5.xlarge",
 				"monitoring":                           null,
 				"source_dest_check":                    true,
 				"tags": {
-					"Name":  "roger-demo",
-					"Owner": "rberlind",
+					"Name":  "",
+					"Owner": "",
 				},
 				"timeouts":         null,
 				"user_data":        null,
@@ -169,7 +169,7 @@ resource_changes = {
 			"after": {
 				"ami": "ami-2e1ef954",
 				"associate_public_ip_address":          true,
-				"availability_zone":                    "us-west-1b",
+				"availability_zone":                    "eu-west-1b",
 				"credit_specification":                 [],
 				"disable_api_termination":              null,
 				"ebs_optimized":                        null,
@@ -177,12 +177,12 @@ resource_changes = {
 				"hibernation":                          null,
 				"iam_instance_profile":                 null,
 				"instance_initiated_shutdown_behavior": null,
-				"instance_type":                        "t2.xlarge",
+				"instance_type":                        "r5.xlarge",
 				"monitoring":                           null,
 				"source_dest_check":                    true,
 				"tags": {
-					"Name":  "roger-demo-nested",
-					"Owner": "rberlind",
+					"Name":  "",
+					"Owner": "",
 				},
 				"timeouts":         null,
 				"user_data":        null,
