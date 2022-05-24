@@ -64,15 +64,6 @@ policy "restrict-ami-owners" {
   enforcement_level = "advisory"
 }
 
-policy "restrict-assumed-roles-by-workspace" {
-  source = "./restrict-assumed-roles-by-workspace.sentinel"
-  enforcement_level = "advisory"
-}
-
-policy "restrict-assumed-roles" {
-  source = "./restrict-assumed-roles.sentinel"
-  enforcement_level = "advisory"
-}
   
 policy "restrict-current-ec2-instance-type" {
   source = "./restrict-current-ec2-instance-type.sentinel"
@@ -86,11 +77,6 @@ policy "restrict-db-instance-engines" {
 
 policy "restrict-ec2-instance-type" {
   source = "./restrict-ec2-instance-type.sentinel"
-  enforcement_level = "advisory"
-}
-
-policy "restrict-egress-sg-rule-cidr-blocks" {
-  source = "./restrict-egress-sg-rule-cidr-blocks.sentinel"
   enforcement_level = "advisory"
 }
   
