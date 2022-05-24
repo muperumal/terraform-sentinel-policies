@@ -15,15 +15,15 @@ import "tfrun"
 
 # Allowed Roles Map
 allowed_roles = {
-  "arn:aws:iam::123412341234:role/role-dev": [
+  "arn:aws:iam::224748228916:role/role-dev": [
     "(.*)-dev$",
     "^dev-(.*)",
   ],
-  "arn:aws:iam::567856785678:role/role-qa": [
+  "arn:aws:iam::732706656194:role/role-qa": [
     "(.*)-qa$",
     "^qa-(.*)",
   ],
-  "arn:aws:iam::909012349090:role/role-prod": [
+  "arn:aws:iam::431308819416:role/role-prod": [
     "(.*)-prod$",
     "^prod-(.*)",
   ],
